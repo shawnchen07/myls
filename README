@@ -1,0 +1,90 @@
+This is the README file for the PA4 assignment.
+
+Name: Shawn Y Chen
+Userid: cs30xaz
+Date: Nov. 30, 2011
+
+Description: This program is basically a limited version of the "ls" utility
+	     that exists on UNIX systems. The program implements a few of the
+	     ls options: -a, -l, -r, -t, or any combination of these, such
+	     as -alrt. The user can use this program by calling "myls",
+	     selecting any of the - options, and then providing the name
+	     of the file or directory that myls should be applied to. The
+	     user can supply the program with any combination of directories
+	     or files, since the program will loop through each one. The
+	     myls program displays various information about the supplied
+	     files and directories. The -a option prints all files,
+	     including hidden files that start with a period. The -l option
+	     prints the long form of the file information, which includes
+	     the date last modifies, file size, number of directories, etc.
+	     The -r option sorts the files in reverse. Finally, the -t
+	     option sorts the files by last date of modification.
+
+How to Compile it: Type "make" into the command line
+
+How to Run it: Type "./myls [-alrt] [file or directory]" into the command
+	       line in order to get the ls information of each file or
+	       directory you input. If you do not include a file or
+	       directory, the program will by default pass in the current
+	       directory.
+
+		    Example commands:
+		    1) ./myls -l
+		    2) ./myls -ar myls.c myls.h
+		    3) ./myls -alrt ~/pa4
+
+Normal Output: stdout (pa4)
+
+[cs30xaz@ieng9]:pa4:506$ ./myls -al ~/pa0
+/home/solaris/ieng9/cs30x/cs30xaz/pa0:
+drwxr-x---   3 cs30xaz  cs30x       4096 Nov 29 01:54 .
+drwxr-x---  12 cs30xaz  cs30x       4096 Nov 30 00:43 ..
+-rw-r-----   1 cs30xaz  cs30x       1468 Sep 28 14:53 Makefile
+-rw-r-----   1 cs30xaz  cs30x       1528 Sep 29 16:55 README
+-rwxr-x---   1 cs30xaz  cs30x       9169 Oct 13 01:52 a.out
+drwxr-x---   2 cs30xaz  cs30x       4096 Nov 29 01:54 lulz
+-rw-r-----   1 cs30xaz  cs30x       1853 Sep 29 11:56 main.c
+-rw-r-----   1 cs30xaz  cs30x       6705 Oct 13 01:52 main.ln
+-rw-r-----   1 cs30xaz  cs30x       2984 Oct 13 01:52 main.o
+-rw-r-----   1 cs30xaz  cs30x        542 Sep 29 11:51 pa0.h
+-rw-r-----   1 cs30xaz  cs30x       1179 Sep 29 11:53 printBirthDateInfo.c
+-rw-r-----   1 cs30xaz  cs30x       6449 Oct 13 01:52 printBirthDateInfo.ln
+-rw-r-----   1 cs30xaz  cs30x       2704 Oct 13 01:52 printBirthDateInfo.o
+-rw-r-----   1 cs30xaz  cs30x       1360 Oct 13 01:52 printHello.o
+-rw-r-----   1 cs30xaz  cs30x       1789 Sep 29 12:16 printHello.s
+-rw-r-----   1 cs30xaz  cs30x       1180 Oct 13 01:52 sum3.o
+-rw-r-----   1 cs30xaz  cs30x       1467 Sep 29 12:17 sum3.s
+
+[cs30xaz@ieng9]:pa4:508$ ./myls -ar test
+test:
+test4
+test3
+test
+sdf
+lol
+llj
+3
+2
+..
+.
+
+Abnormal Output: stderr/perror
+
+[cs30xaz@ieng9]:pa4:516$ ./myls -lolwut
+./myls: illegal option -- o
+Usage: ./myls [-alrt] [file ...]
+
+[cs30xaz@ieng9]:pa4:515$ ./myls -al Does not EXIST!
+lstat -- Does: No such file or directory
+lstat -- not: No such file or directory
+lstat -- EXIST!: No such file or directory
+
+Testing Strategies: I tested my program by writing a few tester files that
+                    tested my sort files. This reassured that at least
+		    a few of my methods were completely correct. I also 
+		    coded myls.c, buildFileInfo.c, and displayOwnerName.c
+		    early on, allowing the program to display some output.
+		    This helped me to continually test my code each step of
+		    the way. Thus, after I finished writing each method, I
+		    was able to test it piece be piece.
+
